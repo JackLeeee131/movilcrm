@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="secondary">
+      <ion-button (click)="loadData(true)">
+        <ion-icon slot="icon-only" name="download"></ion-icon>
+      </ion-button>
+        <ion-button (click)="doInfinite($event)">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Orders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-col style="display: flex">
+        <ion-searchbar [(ngModel)]="searchTerm" ></ion-searchbar>
+        <ion-button (click)="clearFilteredItems()" style="margin-top: 10px"><ion-icon name="close"></ion-icon></ion-button>
+        <ion-button (click)="setFilteredItems()" style="margin-top: 10px"> Buscar</ion-button>
+        <ion-button (click)="createOrder()" style="margin-top: 10px;" > New Order</ion-button>      
+    </ion-col>
+    
+    <ion-col >
+       <ion-item *ngFor="let item of items">
+          <ion-col size="9">
+              {{ item.name }}
+          </ion-col>
+          <ion-col size="3" text-right>
+              <ion-button (click)="updateCustomer(item.id, item.name, item.razon_social)"> Edit Order</ion-button>
+          </ion-col>
+        </ion-item>        
+    </ion-col>
+
+</ion-content>

@@ -1,0 +1,146 @@
+<ion-header>
+    <div style="display: flex; padding:20px">
+        <ng-container>
+            <ion-title>Create Order</ion-title>
+        </ng-container>
+
+        <ion-icon ios="ios-contacts" md="md-contacts" style="margin-left: 300px"></ion-icon>
+    </div>
+</ion-header>
+
+<ion-content>
+    <form>
+        <ion-grid>
+
+            <ion-row>
+                <ion-col col-8>
+                    <ion-searchbar placeholder="BUSCAR" showCancelButton="true"  [(ngModel)]="searchTerm" [ngModelOptions]="{standalone: true}">
+                    </ion-searchbar>
+                </ion-col>
+                <ion-col col-2>
+                    <button (click)="customerSearch()"  style="color: black; zoom: 2; margin-top: 7px; border-radius: 3px" shape="full" expand="block">
+                        <ion-icon ios="ios-search" md="md-search"></ion-icon>
+                    </button>
+                </ion-col>
+            </ion-row>
+            <ion-list id="as">
+                <ion-item *ngFor="let item of items" tappable (click)="chooseCustomer(item.name)">
+                        {{ item.name }} 
+                </ion-item>
+            </ion-list>
+
+
+            <ion-row color="primary" justify-content-center>
+                <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                    <ion-list>
+
+                        <ion-item>
+                            <ion-label position="stacked">SELECTED CUSTOMER</ion-label>
+                            <ion-input type="text" id="custom_name" [(ngModel)]="custom_name"
+                                [ngModelOptions]="{standalone: true}" (ionChange)="destroyItem()">
+                                {{custom_name.custom_name}}                                
+                            </ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label position="stacked">DATE</ion-label>
+                            <ion-datetime displayFormat="DD MM YYYY" pickerFormat="DD MM YYYY" min="2016" max="2030">
+                            </ion-datetime>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label position="stacked">PRICELIST</ion-label>
+                            <ion-select placeholder="Select One">
+                                    <ion-select-option value="g">General</ion-select-option>
+                                    <ion-select-option value="p">Public</ion-select-option>
+                                    <ion-select-option value="m">Mayorista</ion-select-option>
+                                  </ion-select>
+                            <!-- <ion-input type="text" id="custom_razon" [(ngModel)]="custom_razon"
+                                [ngModelOptions]="{standalone: true}">
+                            </ion-input> -->
+                        </ion-item>
+
+
+                        <ion-item>
+                            <ion-label position="stacked">PRODUCT LIST with: UPDATE, DELETE, INLINE QTY EDIT</ion-label>
+                            
+                            <ion-grid *ngIf="selectedProducts && selectedProducts.length > 0">
+                                <ion-row class="rmCabezeraNegra">
+                                    <ion-col col-4>
+                                        <b>Product</b>
+                                    </ion-col>
+                                    <ion-col col-2 class="rmNumero">
+                                        <b>Qty</b>
+                                    </ion-col>
+                                    <ion-col col-2 class="rmNumero">
+                                        <b>PU</b>
+                                    </ion-col>
+                                    <ion-col col-1 class="rmNumero">
+                                        <b>PERCENT_DISC</b>
+                                    </ion-col>
+                                    <ion-col col-2 class="rmNumero">
+                                        <b>Sub_Total</b>
+                                    </ion-col>
+                                    <ion-col col-1>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row *ngFor="let product of selectedProducts">
+                                    <ion-col col-4>
+                                        {{product.product.product}}
+                                    </ion-col>
+                                    <ion-col col-2 class="rmNumero">
+                                        {{product.quantity | number: '1.0-0'}}
+                                    </ion-col>
+                                    <ion-col col-2 class="rmNumero">
+                                        {{getProductPrice(product) | number: '1.2-2'}}
+                                    </ion-col>
+                                    <ion-col col-1 class="rmNumero">
+                                        {{product.discount | number: '1.0-0'}}
+                                    </ion-col>
+                                    <ion-col col-2 class="rmNumero">
+                                        {{getProductTotal(product) | number: '1.2-2'}}
+                                    </ion-col>
+                                    <ion-col col-1>
+                                        <ion-icon color='danger' class='borrar' (click)="removeProduct(product.product.id)" name="close-circle">
+                                        </ion-icon>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col col-8>
+                                        <b>Total</b>
+                                    </ion-col>
+                                    <ion-col col-3 class="rmNumero">
+                                        <b>{{getTotal() | number: '1.2-2'}}</b>
+                                    </ion-col>
+                                    <ion-col col-1>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+
+                            <ion-button (click)="addProduct()" style="margin-top: 10px;"> New Product</ion-button>
+
+                        </ion-item>
+
+                    </ion-list>
+
+                    <ion-row>
+                        <ion-col>
+                            <ng-container >
+                                <ion-button (click)="createOrder()" color="primary" shape="full" expand="block">
+                                    CREATE</ion-button>
+                            </ng-container>
+                            
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-button (click)="backToCustomers()" color="primary" shape="full" expand="block">Back
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>

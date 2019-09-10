@@ -1,0 +1,66 @@
+<ion-header>
+    <div style="display: flex; padding:20px">
+        <ng-container *ngIf="flag=='create'">
+            <ion-title>Create Customer</ion-title>
+        </ng-container>
+        <ng-container *ngIf="flag=='update'">
+            <ion-title>Update Customer</ion-title>
+        </ng-container>
+      
+      <ion-icon ios="ios-contacts" md="md-contacts" style="margin-left: 300px"></ion-icon>
+    </div>
+</ion-header>
+<ion-content>
+    <form style="padding: 150px;"  >
+          <ion-grid >
+              <ion-row color="primary" justify-content-center>
+                <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                    <ng-container *ngIf="flag=='create'">
+                        <div text-center>
+                            <h3>Create Customer!</h3>
+                        </div>
+                    </ng-container>
+                    
+                    <ng-container *ngIf="flag=='update'">
+                        <div text-center>
+                            <h3>Update Customer!</h3>
+                        </div>
+                    </ng-container>
+                  
+                  <ion-list>
+                      <ion-item>
+                          <ion-label position="stacked">NAME</ion-label>
+                          <ion-input  type="text" id="custom_name" [(ngModel)]="custom_name" [ngModelOptions]="{standalone: true}">
+                          </ion-input>
+                      </ion-item>
+
+
+                      <ion-item>
+                          <ion-label position="stacked">RAZON_SOCIAL</ion-label>
+                          <ion-input  type="text" id="custom_razon" [(ngModel)]="custom_razon" [ngModelOptions]="{standalone: true}">
+                          </ion-input>
+                      </ion-item>
+                  </ion-list>
+
+                  <ion-row >
+                      <ion-col>
+                          <ng-container *ngIf="flag=='create'">
+                              <ion-button (click)="createCustomer()" color="primary" shape="full" expand="block">CREATE</ion-button>
+                          </ng-container>
+                          <ng-container *ngIf="flag=='update'">
+                              <ion-button (click)="updateCustomer()" color="primary" shape="full" expand="block">UPDATE</ion-button>
+                          </ng-container>
+                      </ion-col>
+                  </ion-row>
+
+                  <ion-row >
+                      <ion-col>
+                          <ion-button (click)="backToCustomers()" color="primary" shape="full" expand="block">Back</ion-button>
+                      </ion-col>
+                  </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+    </form>
+</ion-content>
+

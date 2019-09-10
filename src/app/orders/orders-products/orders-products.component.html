@@ -1,0 +1,85 @@
+<!-- 
+<ion-header>
+		<ion-navbar align-title="center">
+		   <ion-title>SELECT PRODUCT</ion-title>
+		</ion-navbar>
+</ion-header>
+
+<ion-content padding class="forms-validations-content agregarProducto">
+	<ion-row>
+		<ion-col col-10>
+			<ion-searchbar [(ngModel)]="searchTerm" placeholder="SEARCH_PRODUCTS" 
+				[showCancelButton]="true" ></ion-searchbar>
+		</ion-col>
+		<ion-col col-2>
+			<button (click)= "updateSearch()" ion-button style="margin:10px; float:right">
+				<ion-icon  ios="ios-search" md="md-search"></ion-icon>
+			</button>
+		</ion-col>
+	</ion-row>
+	<ion-list>
+		<ion-item *ngFor="let product of products" tappable (click)="chooseItem(product)">
+			{{ product.product }} ({{ product.stockRunning }})
+		</ion-item>
+	</ion-list>
+	<form class="sample-form validations-form" [formGroup]="validations_form"  (submit)="onSubmit(validations_form.value)">
+		<section class="form-section">
+			<br/>
+			<ion-row>
+				<ion-col col-9 style="padding: 0px;">
+					<ion-item>
+						<ion-label floating>Product</ion-label>
+						<ion-input [readonly]="true" type="text" formControlName="product"></ion-input>
+					</ion-item>
+					<div class="validation-errors">
+						<ng-container *ngFor="let validation of validation_messages.product">
+							<div class="error-message" *ngIf="validations_form.get('product').hasError(validation.type) && (validations_form.get('product').dirty || validations_form.get('product').touched)">
+								{{ validation.message }}
+							</div>
+						</ng-container>
+					</div>
+				</ion-col>
+				<ion-col col-3 style="padding: 0px;">
+					<ion-item>
+						<ion-label floating>Stock</ion-label>
+						<ion-input type="number" [readonly]="true" formControlName="stock"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			
+			<ion-row>
+				<ion-col col-8 style="padding: 0px;">
+					<ion-item>
+						<ion-label floating>QUANTITY</ion-label>
+						<ion-input type="number" formControlName="quantity"></ion-input>
+					</ion-item>				
+				</ion-col>
+				<ion-col col-4 style="padding: 0px;">
+					<ion-item>
+						<ion-label floating>PERCENT_DISCOUNT</ion-label>
+						<ion-input type="number" formControlName="discount"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<div class="validation-errors">
+				<ng-container *ngFor="let validation of validation_messages.quantity">
+					<div class="error-message" *ngIf="validations_form.get('quantity').hasError(validation.type) && (validations_form.get('quantity').dirty || validations_form.get('quantity').touched)">
+						{{ validation.message }}
+					</div>
+				</ng-container>
+			</div>
+
+
+			<br/><br/>
+			<button ion-button full color='secondary' (click)="addProduct(validations_form.value)" type="button" [disabled]="!validations_form.valid">SAVE_ADD_ANOTHER</button>
+
+			<br/><br/>
+			<button ion-button full type="submit" [disabled]="!validations_form.valid">SUBMIT</button>
+			<br/><br/>
+			<button ion-button full type="button" (click)="cancel()" >CANCEL</button>
+
+		</section>
+	</form>
+</ion-content> -->
+
+<p> you can create product form here</p>

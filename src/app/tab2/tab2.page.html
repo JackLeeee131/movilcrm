@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="secondary">
+      <ion-button (click)="loadData(true)">
+        <ion-icon slot="icon-only" name="download"></ion-icon>
+      </ion-button>
+      <ion-button (click)="doInfinite($event)">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let item of as_productos">
+      {{ item.name }}
+    </ion-item>
+  </ion-list>
+  <!-- <ion-card *ngFor="let item of as_productos">
+    <ion-item>
+      <h3 text-capitalize>{{ item.name }}</h3>
+    </ion-item>
+    <ion-card-content>
+      Codigo: {{ item.default_code }} ID:{{ item.id }}
+    </ion-card-content>
+  </ion-card> -->
+
+  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll> -->
+
+
+
+
+  <!-- <ion-list>
+    <ion-item-sliding class="list-item" *ngFor="let item of as_productos">
+      <ion-item class="item-content">
+        <ion-row>
+          <ion-col col-12>
+            <h2 class="item-title"><b>{{item.name}}</b></h2>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-1>
+            <h2 ion-text color="primary">CH:</h2>
+          </ion-col>
+          <ion-col col-3>
+            <h2 ion-text color="primary" class="rm_numero bold">{{item.ch | number: '1.2-2'}}</h2>
+          </ion-col>
+          <ion-col col-1>
+            <h2 ion-text color="primary">CM:</h2>
+          </ion-col>
+          <ion-col col-3>
+            <h2 ion-text color="primary" class="rm_numero bold">{{item.cm | number: '1.2-2'}}</h2>
+          </ion-col>
+          <ion-col col-1>
+            <h2 ion-text color="primary">CG:</h2>
+          </ion-col>
+          <ion-col col-3>
+            <h2 ion-text color="primary" class="rm_numero bold">{{item.cg | number: '1.2-2'}}</h2>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-1>
+            <h2 ion-text color="primary">SI:</h2>
+          </ion-col>
+          <ion-col col-3>
+            <h2 ion-text color="dark" class="rm_numero bold">{{item.originalStock | number: 0}}</h2>
+          </ion-col>
+          <ion-col col-1>
+            <h2 ion-text color="primary">PT:</h2>
+          </ion-col>
+          <ion-col col-3>
+            <h2 ion-text color="dark" class="rm_numero bold">{{(item.pt ? item.pt : 0) | number: 0}}</h2>
+          </ion-col>
+          <ion-col col-1>
+            <h2 ion-text color="primary">SF:</h2>
+          </ion-col>
+          <ion-col col-3>
+            <h2 ion-text color="dark" class="rm_numero bold">{{(item.stock ? item.stock : 0) | number: 0}}</h2>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list> -->
+
+
+</ion-content>

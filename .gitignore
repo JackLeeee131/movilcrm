@@ -1,0 +1,16 @@
+*.pyc
+*.zip
+*.rar
+*.tar
+*.gz
+ion2FullApp-ELITE-version
+backend
+node_modules
+platforms
+artes
+.ftpconfig
+source
+rmDbConfig.php
+rmOdooConfig.php
+app_movil_workspace.code-workspace
+__MACOSX
